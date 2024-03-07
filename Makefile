@@ -39,6 +39,7 @@ apiprotos := \
 	proto/spire/api/server/localauthority/v1/localauthority.proto \
 	proto/spire/api/server/trustdomain/v1/trustdomain.proto \
 	proto/spire/api/server/svid/v1/svid.proto \
+	proto/spire/api/server/bootstrap/v1/bootstrap.proto
 
 # Used to force some rules to run every time
 FORCE: ;
