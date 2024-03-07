@@ -2,7 +2,7 @@ syntax = "proto3";
 package spire.api.server.bootstrap.v1;
 option go_package = "github.com/spiffe/spire-api-sdk/proto/spire/api/server/bootstrap/v1;bootstrapv1";
 
-service Boostrap {
+service Bootstrap {
     // Get trust anchor ARN
     rpc GetTrustAnchorARN(GetTrustAnchorARNRequest) returns (GetTrustAnchorARNResponse);
 }

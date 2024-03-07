@@ -13,85 +13,85 @@ import (
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion7
 
-// BoostrapClient is the client API for Boostrap service.
+// BootstrapClient is the client API for Bootstrap service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type BoostrapClient interface {
+type BootstrapClient interface {
 	// Get trust anchor ARN
 	GetTrustAnchorARN(ctx context.Context, in *GetTrustAnchorARNRequest, opts ...grpc.CallOption) (*GetTrustAnchorARNResponse, error)
 }
 
-type boostrapClient struct {
+type bootstrapClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewBoostrapClient(cc grpc.ClientConnInterface) BoostrapClient {
-	return &boostrapClient{cc}
+func NewBootstrapClient(cc grpc.ClientConnInterface) BootstrapClient {
+	return &bootstrapClient{cc}
 }
 
-func (c *boostrapClient) GetTrustAnchorARN(ctx context.Context, in *GetTrustAnchorARNRequest, opts ...grpc.CallOption) (*GetTrustAnchorARNResponse, error) {
+func (c *bootstrapClient) GetTrustAnchorARN(ctx context.Context, in *GetTrustAnchorARNRequest, opts ...grpc.CallOption) (*GetTrustAnchorARNResponse, error) {
 	out := new(GetTrustAnchorARNResponse)
-	err := c.cc.Invoke(ctx, "/spire.api.server.bootstrap.v1.Boostrap/GetTrustAnchorARN", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/spire.api.server.bootstrap.v1.Bootstrap/GetTrustAnchorARN", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// BoostrapServer is the server API for Boostrap service.
-// All implementations must embed UnimplementedBoostrapServer
+// BootstrapServer is the server API for Bootstrap service.
+// All implementations must embed UnimplementedBootstrapServer
 // for forward compatibility
-type BoostrapServer interface {
+type BootstrapServer interface {
 	// Get trust anchor ARN
 	GetTrustAnchorARN(context.Context, *GetTrustAnchorARNRequest) (*GetTrustAnchorARNResponse, error)
-	mustEmbedUnimplementedBoostrapServer()
+	mustEmbedUnimplementedBootstrapServer()
 }
 
-// UnimplementedBoostrapServer must be embedded to have forward compatible implementations.
-type UnimplementedBoostrapServer struct {
+// UnimplementedBootstrapServer must be embedded to have forward compatible implementations.
+type UnimplementedBootstrapServer struct {
 }
 
-func (UnimplementedBoostrapServer) GetTrustAnchorARN(context.Context, *GetTrustAnchorARNRequest) (*GetTrustAnchorARNResponse, error) {
+func (UnimplementedBootstrapServer) GetTrustAnchorARN(context.Context, *GetTrustAnchorARNRequest) (*GetTrustAnchorARNResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTrustAnchorARN not implemented")
 }
-func (UnimplementedBoostrapServer) mustEmbedUnimplementedBoostrapServer() {}
+func (UnimplementedBootstrapServer) mustEmbedUnimplementedBootstrapServer() {}
 
-// UnsafeBoostrapServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to BoostrapServer will
+// UnsafeBootstrapServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to BootstrapServer will
 // result in compilation errors.
-type UnsafeBoostrapServer interface {
-	mustEmbedUnimplementedBoostrapServer()
+type UnsafeBootstrapServer interface {
+	mustEmbedUnimplementedBootstrapServer()
 }
 
-func RegisterBoostrapServer(s grpc.ServiceRegistrar, srv BoostrapServer) {
-	s.RegisterService(&_Boostrap_serviceDesc, srv)
+func RegisterBootstrapServer(s grpc.ServiceRegistrar, srv BootstrapServer) {
+	s.RegisterService(&_Bootstrap_serviceDesc, srv)
 }
 
-func _Boostrap_GetTrustAnchorARN_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _Bootstrap_GetTrustAnchorARN_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetTrustAnchorARNRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BoostrapServer).GetTrustAnchorARN(ctx, in)
+		return srv.(BootstrapServer).GetTrustAnchorARN(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/spire.api.server.bootstrap.v1.Boostrap/GetTrustAnchorARN",
+		FullMethod: "/spire.api.server.bootstrap.v1.Bootstrap/GetTrustAnchorARN",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BoostrapServer).GetTrustAnchorARN(ctx, req.(*GetTrustAnchorARNRequest))
+		return srv.(BootstrapServer).GetTrustAnchorARN(ctx, req.(*GetTrustAnchorARNRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Boostrap_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "spire.api.server.bootstrap.v1.Boostrap",
-	HandlerType: (*BoostrapServer)(nil),
+var _Bootstrap_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "spire.api.server.bootstrap.v1.Bootstrap",
+	HandlerType: (*BootstrapServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "GetTrustAnchorARN",
-			Handler:    _Boostrap_GetTrustAnchorARN_Handler,
+			Handler:    _Bootstrap_GetTrustAnchorARN_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
